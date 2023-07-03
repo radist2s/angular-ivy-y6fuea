@@ -1,0 +1,43 @@
+<div>
+  <script type="module" async src="https://wl.dev.monite.com/monite-app.js"></script>
+
+<monite-app basename="/" entity-id="3a71f862-e8a4-415b-840e-a85b6d1f0d27" api-url="https://api.dev.monite.com/v1">
+  <script slot="fetch-token">
+    async function fetchToken() {
+      const request = {
+        grant_type: "entity_user",
+        entity_user_id: '4712b343-84a6-4f1b-8fe5-fd11ec0d037b',
+        client_id: '28d63b9b-9534-4e53-92a3-81b6e3231bed',
+        client_secret: '51679db0-2a05-4250-b43b-b1c0905de4df',
+      };
+      const response = await fetch(
+        "https://api.dev.monite.com/v1/auth/token", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-monite-version": "2023-04-12",
+          },
+          body: JSON.stringify(request),
+        }
+      );
+      return await response.json();
+    }
+  </script>
+
+  <script slot="theme" type="application/json">
+    {
+      "fontFamily": "Comic Sans MS, Comic Sans, cursive, monospace"
+    }
+  </script>
+
+  <script slot="locale" type="application/json">
+    {
+      "code": "en",
+      "currencyLocale": "de-DE",
+      "messages": {
+        "Name, country, city": "Test"
+      }
+    }
+  </script>
+</monite-app>
+</div>
